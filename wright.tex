@@ -1,0 +1,205 @@
+\documentclass[14pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{changepage}
+\selectlanguage{polish}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\addtolength{\topmargin}{.250in}
+
+\pagestyle{fancy}
+\lhead[E]{11. Więcej o relacjach}
+
+
+\title{Relacja porządku - wright}
+\author{Kamil Marynowski - nr albumu 71610 Grupa IAM1 - Informatyka inżynierskie }
+\date{February 2021}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\begin{document}
+\thispagestyle{empty}
+
+% \begin{center}
+%     {\fontsize{90}{10}\selectfont 11.} {\fontsize{28}{10}\selectfont  \space WIĘCEJ O RELACJACH}    
+% \end{center}
+
+\textbf{
+    {\fontsize{80}{10}\selectfont 11.}
+    \quad
+    {\fontsize{20}{10}\selectfont WIĘCEJ O RELACJACH}    
+}
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+
+\begin{changemargin}{160pt}{0pt} 
+\qquad W tym rozdziale kontynuujemy badanie relacji rozpoczęte
+dawno temu, w rodziale 3. Rozsądnie byłoby pokrótce go przej-
+rzeć dla przypomnienia sobie terminologii. Pierwsze dwa pa-
+ragrafy tego rodziału zajmują się relacjami, które porządkują
+elementy danego zbioru. Zaczniemy od częściowych porządków
+w przypadku ogólnym, a następnie zajmiemy się pewnymi 
+szczególnymi relacjami porządku na zbiorach.
+$S_{1} \times ... \times S_{n}$ i $\sum^{*}$. W paragrafie 11.3 omawiamy pojęcie złożenia dowolnych relacji i pokazujemy, jak stwierdzenia dotyczące relacji można wyrażać w języku macierzy. W ostatnim paragrafie zajmujemy się pojęciem najmniejszej relacji, spełniającej różnorodne własności i zawierającej daną relację \textit{R} w zbiorze \textit{S}. Opisana jest tam, w szczególności, najmniejsza relacja równoważności zawierająca \textit{R}.
+
+\qquad Paragrafy 11.3 i 11.4 są niezależne od pierwszych dwóch paragrafów tego rodziału i mogą być studiowane osobno.
+\end{changemargin} 
+
+
+\section*{ \textsection~11.1. Zbiory częściowo uporządkowane}
+\begin{changemargin}{160pt}{0pt} 
+\qquad W tym paragrafie zajmiemy się zbiorami, których elementy
+można ze sobą w pewien sposób porównywać. W typowej sytuacji jeden z elementów będziemy traktować jako mniejszy od drugiego bądź jako występujący przed nim w sensie pewnej kolejności.
+\end{changemargin} 
+
+\textbf{PRZYKŁAD 1} 
+\begin{changemargin}{160pt}{0pt} 
+\qquad (a) Przyzwyczajeni jesteśmy do porównywania liczb 
+rzeczywistych.
+Na przykład liczba 3 jest mniejsza od liczby 5, liczba -1 jest mniejsza od liczby 4 i liczba -1 jest większa od liczby -3. Porównujemy dwie liczby stwierdzając, która z nich jest większa, a która mniejsza.
+\end{changemargin}
+
+\begin{changemargin}{160pt}{0pt} 
+\qquad (b) Jeśli elementy jakiegoś zbioru \textit{S} są wypisane z użyciem
+indeksów ze zbioru $\mathbb{P}$ lub $\mathbb{N}$ w taki sposób, że różne elementy mają różne indeksy, to możemy porównać dwa elementy zbioru \textit{S} stwierdzając, który z nich ma mniejszy indeks. Różne sposoby indeksowania elementów \textit{S} prowadzą do różnych sposobów ustalenia kolejności elementów \textit{S}. Dany element raz może mieć najmniejszy indeks, innym razem zaś może być poprzedzony wieloma innymi elementami.
+\end{changemargin}
+
+\begin{changemargin}{160pt}{0pt} 
+\qquad Zbiór, którego elementy można w ten sposób porównywać, nazywamy \textbf{uporządkowanym}, a strukturę, która niesie informację, jak jego elementy ze sobą porównywać, nazywamy \textbf{relacją porządku} w zbiorze \textit{S}. Aby móc powiedzieć cokolwiek pożytecznego o zbiorach uporządkowanych, musimy uczynić te definicje bardziej precyzyjnymi. Na początek wszakże zauważymy, że w przypadku wielu pojawiających się w sposób naturalny zbiorów wiemy, jak porównywać pewne elementy z innymi, ale jednocześnie mamy do czynienia z parami elementów nieporównywalnych.
+\end{changemargin}
+
+\textbf{PRZYKŁAD 2}
+\begin{changemargin}{160pt}{0pt} 
+\qquad (a) Gdybyśmy chcieli porównywać ze sobą marki samochodów, to moglibyśmy się, być może zgodzić co do tego, że marka \textit{RR} jest lepsza od marki \textit{H}, ponieważ jest od niej lepsza pod każdym względem. Moglibyśmy jendak nie być w stanie powiedzieć czy lepsza jest marka \textit{F}, czy marka \textit{C}, ponieważ każda z nich może pod pewnymi względami drugą przewyższać.
+
+\qquad (b) Możemy się umówić, że dwie liczby ze zbioru 
+$\{$1, 2, 3, ...,73$\}$ są porównywalne, jeśli jedna z nich jest dzielnikiem drugiej. Wówczas liczby 6 i 72, a także 6 i 3, są porównywalne. Natomiast liczby 6 i 8 nie są porównywalne, gdyż żadna z nich nie jest dzielnikiem drugiej.
+
+\qquad (c) Możemy porównywać dwa pozdbiory danego zbioru \textit{S} (tzn. elementy zbioru $\mathcal{P}(\mathit{S}))$, jeśli jeden z nich jest zawarty w drugim. 
+Jeśli zbiór \textit{S} ma więcej, niż jeden element to zawiera jakieś nieporównywalne podzbiory. Na przykład, jeśli $s_{1} \ne s_{2}$ oraz $s_{1}$ i $s_{2}$ należą do \textit{S}, to zbiory $\{s_{1}\}$ i $\{s_{2}\}$ są nieporównywalne.
+
+\qquad (d) Możemy porównywać funckje punktowo. Jeśli, na przykład, funkcje \textit{f} i \textit{g} są określone na zbiorze \textit{S} i przyjmują wartości w $\{0, 1\}$, to moglibyśmy traktować funkcję \textit{f} jako mniejszą lub równą \textit{g}, gdy \textit{f}(\textit{s}) $\le$ \textit{g}(\textit{s}) dla każdego $\mathit{s} \in \mathit{S}$. To jest w gruncie rzeczy ten porządek, który nadaliśmy zbiorowi $\mathbb{B}^{n}$ w przykładzie 3 z \textsection 10.1. Jest on podobny do sposobu porównywania samochodów z punktu (a).
+
+\qquad Zbiory, takie jak te z przykładu 2, z relacjami pozwalającymi porównywać ze sobą elementy, ale dopuszczającymi istnienie elementów nieporównywalnych nazywamy częściowo uporządkowanymi. Tworzą one ważną klasę, którą teraz zdefiniujemy w ścisły sposób.
+
+\qquad Przypomnij sobie, że relacja \textit{R} w zbiorze \textit{S} jest to podzbiór
+zbioru $\textit{S} \times \textit{S}$. \textbf{Częściowy porządek} w zbiorze \textit{S} to relacja \textit{R}, która jest zwrotna antysymetrzyczna i przechodnia. Jeśli będziemy pisać $\textit{x} \preceq \textit{y}$ zamiast $(\textit{x},\textit{y}) \in \textit{R}$, to warunki te stwierdzają, że częściowy porządek spełnia:
+\begin{itemize}
+    \item[] (Z) \quad $\mathit{s} \preceq \mathit{s}$ dla każdego $\mathit{s} w \mathit{S};$
+    \item[] (AS) \quad  $\mathit{s} \preceq \mathit{t}$ i $\mathit{t} \preceq \mathit{s}$ implikują $s = t;$
+    \item[] (P) \quad $\mathit{s} \preceq \mathit{t}$ i $\mathit{t} \preceq \mathit{u}$ implikują $\mathit{s} \preceq \mathit{u}$.
+\end{itemize}
+To są dokładnie te własności zwykłego porządku $\le$, które wyróżniliśmy w przykładzie 4 z \textsection ~3.1.
+
+
+\qquad Jeśli $\preceq$ jest częściowym porządkiem w zbiorze \textit{S}, to parę $(\textit{S}, \preceq)$ nazywamy \textbf{zbiorem częściowo uporządkowanym}. 
+Używamy symbolu ''$\preceq$''~jako ogólnego oznaczenia dla częściowego porządku.
+Jeśli dla danego szczególnego częściowego porządku istnieje już oznaczenie, takie jak ''$\le$'' lub ''$\subseteq$'', to będziemy raczej używali właśnie jego zamiast ''$\preceq$''.
+
+\qquad W przykładzie 2 chodziło o relacje ''jest nie tak dobry jak'', ''jest dzielnikiem'', ''jest podzbiorem'' i ''w żadnym punkcie nie jest większa''. Moglibyśmy równie dobrze rozważać relacje ''jest co najmniej tak dobry jak'', ''jest wielokrotnością'', ''zawiera'', i ''w każdym punkcie jest co najmniej równa'', ponieważ relacje te dostarczają tych samych informacji dotyczących porównywania elementów, co relacje przez nas wybrane. Każdy częsćiowy porządek w danym zbiorze wyznacza \textbf{relację odwrotną}, która wiąże \textit{x} z \textit{y} wtedy i tylko wtedy, gdy \textit{y} pozostaje w relacji wyjściowej z \textit{x}. Relacja odwrotna do częściowego porządku $\preceq$ jest na ogół oznaczana przez $\succeq$. Zatem \textit{x} $\succeq$ \textit{y} znaczy to samo, co \textit{y} $\preceq$ \textit{x}. Ta relacja odwrotna również jest częściowym porządkiem (ćwiczenie 7(a)). Jeśli spojrzymy na relację $\preceq$ w zbiorze \textit{S} jako na podzbiór \textit{R} zbioru \textit{S} $\times$ \textit{S}, to relacja $\succeq$
+odpowiada relacji odwrotnej $\mathit{R^\gets}$, zdefiniowanej w \textsection ~3.1.
+
+\qquad Mając dany częściowy porządek $\preceq$ w zbiorze $\textit{S}$, możemy zdefiniować jeszcze jedną relację, $\prec$, w $\mathit{S}$ w następujący sposób:
+
+\begin{itemize}
+\item[] $\mathit{x} \prec \mathit{y}$ wtedy i tylko wtedy, gdy $\mathit{x} \preceq \mathit{y}$ i $\mathit{x} \ne \mathit{y}$
+\end{itemize}
+
+Jeśli, na przykład, $\preceq$ oznacza inkluzję, to $\mathit{A} \prec \mathit{B}$ znaczy, że $\mathit{A}$ jest właściwym podzbiorem $\mathit{B}$, tzn. $\mathit{A} \subset \mathit{B}$. Relacja $\prec$ jest przeciwzwrotna i przechodnia:
+
+\begin{itemize}
+    \item[] (PZ) $\mathit{s} \prec \mathit{s}$ nie zachodzi dla żadnego $\mathit{s}$ w $\mathit{S}$;
+    \item[] (P) $\mathit{s} \prec \mathit{t}$ i $\mathit{t} \prec \mathit{u}$ implikują $\mathit{s} \preceq \mathit{u}$.
+\end{itemize}
+
+Relację przeciwzwrotną i przechodnią nazywamy\newline \textbf{quasi-porządkiem}. Każdy częściowy porządek w zbiorze $\mathit{S}$ wyznacza pewien quasi-porządek i, na odwrót, jeśli $\prec$ jest quasi-porządkiem w $\mathit{S}$, to relacja $\preceq$ zdefiniowana formułą
+
+\begin{itemize}
+    \item[] $\mathit{x} \preceq \mathit{y}$ wtedy i tylko wtedy, gdy $\mathit{x} \prec \mathit{y}$ lub $\mathit{x} = \mathit{y}$
+\end{itemize}
+
+jest częściowym porządkiem w $\mathit{S}$ (ćwiczenie 7(b)). To, czy do porównywania elementów danego zbioru częściowo uporządkowanego wybierze się częściowy porządek, czy też związany z nim quasi-porządek, zależy od problemu, z którym mamy w danym momencie do czynienia. Będziemy na ogół używali częściowego porządku, ale jeśli tak będzie wygodnie, będziemy również używać na zmianę obu relacji.
+
+\qquad Możliwe jest, przynajmniej teoretycznie, narysowanie diagramu, który pozwala jednym rzutem oka objąć całą relację porządku w skończonym zbiorze częściowo uporządkowanym. Mając dany częściowy porządek $\preceq$ w $\mathit{S}$, powiemy, że element $\mathit{t}$ \textbf{nakrywa} element $\mathit{s}$, gdy $\mathit{s} \prec \mathit{t}$ i nie ma w $\mathit{S}$ elementu $\mathit{u}$ takiego, że $\mathit{s} \prec \mathit{u} \prec \mathit{t}$. \textbf{Diagram Hassego} zbioru częściowo uporządkowanego $(\mathit{S},\preceq)$ jest to rysunek grafu skierowanego, którego wierzchołkami są elementy zbioru $\mathit{S}$ i w którym od wierzchołka $\mathit{t}$ do wierzchołka $\mathit{s}$ krawędź biegnie wtedy i tylko wtedy, gdy $\mathit{t}$ nakrywa $\mathit{s}$. Diagramy Hassego, podobnie jak drzewa z wyróżnionym korzeniem, są zazwyczaj rysowane z krawędziami skierowanymi w dół i bez strzałek.
+\end{changemargin}
+
+\newpage
+
+\textbf{PRZYKŁAD 3} 
+\begin{changemargin}{160pt}{0pt} 
+\qquad (a) Niech $\mathit{S} = \{1,2,3,4,5,6\}$. Będziemy pisać $\mathit{m}|\mathit{n}$, gdy $\mathit{m}$ dzieli $\mathit{n}$, tzn. gdy $\mathit{n}$ jest całkowitą wielokrotnością $\mathit{m}$. Diagram z rysunku 11.1 jest diagramem Hassego zbioru częściowo uporządko-
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1.25]{hassego.PNG}
+\caption{}
+\label{fig:universe}
+\end{figure}
+
+wanego $(\mathit{S},|)$. Między 1 i 6 nie ma krawędzi, ponieważ 6 nie nakrywa 1. Możemy wszakże wywnioskować z tego diagramu, że 1|6, ponieważ relacja | jest przechodnia i istnieje w diagramie łańcuch krawędzi odpowiadających temu, że 1|2 i 2|6. Podobnie możemy zobaczyć, że 1|4 biorąc pod uwagę drogę 1|2|4. Zauważ, że, ogólnie w przypadku relacji przechodnich stosować można takie łączone zapisy i nie prowadzi to do nieporozumień: $\mathit{x} \preceq \mathit{y} \preceq \mathit{z}$ znaczy to samo, co $\mathit{x} \preceq \mathit{y}$, $\mathit{y} \preceq \mathit{z}$ i $\mathit{x} \preceq \mathit{z}$.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1.25]{rys2.PNG}
+\caption{}
+\label{fig:universe}
+\end{figure}
+
+\qquad (b) Rozważmy zbiór potęgowy $\mathcal{P}(\{\mathit{a},\mathit{b}, \mathit{c}\})$ z częściowym porządkiem $\in$. Rysunek 2. przedstawia diagram Hassego zbioru $(P({a,b,c}),\subseteq)$. Zauważ, że linia łączaca $\{\mathit{a},\mathit{c}\}$ z $\{\mathit{a}\}$ przecina się z linią łączącą $\{\mathit{a},\mathit{b}\}$ z $\{\mathit{b}\}$, ale przecięcie to jest po prostu cechą tego rysunku i jest bez znaczenia z punktu widzenia własności przedstawianego częściowego porządku. W szczególności, przecięcie tych dwóch linii nie reprezentuje elementu naszego zbioru.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1.25]{rys3.PNG}
+\caption{}
+\label{fig:universe}
+\end{figure}
+
+\qquad (c) Diagram przedstawiony na rysunku 3. nie jest diagramem Hassego, ponieważ $\mathit{u}$ nie może nakrywać $\mathit{x}$, skoro $\mathit{u}$ nakrywa także $\mathit{y}$, a $\mathit{y}$ nakrywa $\mathit{x}$. Gdyby którakolwiek z krawędzi łączących $\mathit{u}, \mathit{x}$ i $\mathit{y}$ została usunięta, rysunek stałby się diagramem Hassego.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1.25]{rys4.PNG}
+\caption{}
+\label{fig:universe}
+\end{figure}
+
+\qquad (d) Diagramy przedstawione na rys. 4. są diagramami Hassego pewnych zbiorów częściowo uporządkowanych. Ich relacje porządku mogą być odczytane bezpośrednio z odpowiednich diagramów. Wszystkie elementy są w relacji same ze sobą. Ponadto:
+
+\qquad Dla zbioru $\mathit{S}=\{a,b,c,d,e,f\}$ mamy $\mathit{a} \preceq \mathit{b}, \mathit{a} \preceq \mathit{c}, \mathit{a} \preceq \mathit{d}, \mathit{a} \preceq \mathit{e}, \mathit{a} \preceq \mathit{f}, \mathit{b} \preceq \mathit{e}, \mathit{b} \preceq \mathit{f}, \mathit{c} \preceq \mathit{f}$. Widzielśmy ten rysunek już wcześniej, w części (a) tego przykładu.
+
+\qquad Dla zbioru $\mathit{T} = \{\mathit{x}, \mathit{y}, \mathit{z}, \mathit{w}\}$ mamy $\mathit{x} \preceq \mathit{y}, \mathit{x} \preceq \mathit{z}, \mathit{x} \preceq \mathit{w}, \mathit{y} \preceq \mathit{z}, \mathit{y} \preceq \mathit{w} i \mathit{z} \preceq \mathit{w}$, Taki właśnie rysunek otrzymalibyśmy dla zbioru wszystkich dzielników liczby 8, albo 27 lub 125 z relacją porządku |.
+
+\qquad Dla zbioru $\mathit{U} = \{\mathit{A}, \mathit{B}, \mathit{C}, \mathit{D}, \mathit{E}\}$ mamy $\mathit{A} \preceq \mathit{B}, \mathit{A} \preceq \mathit{C}, \mathit{A} \preceq \mathit{D}, \mathit{A} \preceq \mathit{E}, \mathit{B} \preceq \mathit{E}, \mathit{C} \preceq \mathit{E} i \mathit{D} \preceq \mathit{E}$. Ten rysunek jest diagramem Hassego zbioru częściowo uporządkowanego składającego się ze zbiorów $\{1\}$, $\{1,2\}$, $\{1,3\}$, $\{1,4\}$, $\{1,2,3,4\}$ z inkluzją jako relacją porządku.
+
+\qquad (e) Relacja <, którą zdefiniowaliśmy w algebrze Boole'a w \textsection ~10.1 jest quasi-porządkiem. Atomy są to dokładnie te elementy algebry, które nakrywają element 0. Zbiór częściowo uporządkowany $(\mathcal{P}(\{a,b,c\}), C)$, rozważany powyżej części (b),
+stanowi przykład algebry Boole'a traktowanej jako zbiór częsciowo uporządkowany.\newline
+
+\qquad Ogólnie, jeśli dany jest diagram Hassego pewnego zbioru częsciowo uporządkowanego, to widzimy, że $\mathit{s} \preceq \mathit{t}$, gdy bądź $\mathit{s} = \mathit{t}$, bądź istnieje (biegnąca w dół) droga od $\mathit{t}$ do $\mathit{s}$. Pamiętając, że porządek jest zwrotny i przechodni dowiemy się o nim wszystkiego na podstawie informacji dotyczących wzajemnego nakrywania elementów.
+
+\qquad Fakt, że każdy skończony zbiór częściowo uporządkowany ma diagram Hassego, jest może intuicyjnie oczywisty, ale mimo to podamy jego dowód, opierając się na własnościach acyklicznych grafów skierowanych.
+\end{changemargin}
+
+\textbf{Twierdzenie}
+\begin{changemargin}{160pt}{0pt}
+\noindent\fbox{%
+    \parbox{5in}{%
+        Każdy skończony zbiór częsciowo uporządkowany ma diagram Hassego.
+    }%
+}
+
+\qquad \textbf{Dowód}. Dla danego zbioru częściowo uporządkowanego $(\mathit{P}, \preceq)$ niech $\mathit{H}$ będzie grafem skierowanym o zbiorze wierzchołków $\mathit{P}$ i w którym od wierchołka $\mathit{x}$ do wierzchołka $\mathit{y}$ biegnie krawędź wtedy i tylko wtedy, gdy $\mathit{x}$ nakrywa $\mathit{y}$. Typowa droga w grafie $\mathit{H}$ ma ciąg wierzchołków $x_{1}x_2...x_{n+1}$, w którym $x_{1}$ nakrywa $x_{2}$, $x_{2}$ nakrywa $x_{3}$ itd., a więc $x_{1} \succ x_{2} \succ ... \succ x_{n+1}$. Na mocy przechodności i antysymetrii, $x_{1} \succ x_{n+1}$; w szczególności $x_{1} \ne x_{n+1}$ i nasza droga nie jest zamknięta. Zatem $\mathit{H}$ jest acyklicznym grafem skierowanym. Pokazaliśmy w paragrafach 7.3 i 8.1, że każdy acykliczny graf skierowany ma etykietowanie uporządkowane. Wybierając dla grafu $\mathit{H}$ takie etykietowanie i robiąc jego rysunek wten sposób, by wierchołki z większymi liczbami były wyżej, otrzymamy diagram Hassego dla $(\mathit{P}, \preceq)$.
+
+\qquad Niektóre nieskończone zbiory częściowo uporządkowane również mają diagramy Hassego. Diagram Hassego zbioru $\mathcal{Z}$ ze zwykłym porządkiem $\lesseq$ składa się z kropek rozmieszczonych w jednakowych odstępach wzdłuż pionowe prostej. Z drugiej strony, ponieważ żadna liczba rzeczywista nie nakrywa żadnej innej w sensie zwykłego porządku $\lesseq$, więc zbiór częsciowo uporządkowany $(\mathcal{R},\lesseq)$ nie ma dragramu Hassego.
+\end{changemargin}
+\end{document}
